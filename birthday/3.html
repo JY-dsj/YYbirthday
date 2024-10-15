@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Cube Images</title>
+
+  <style>
+    /* styles.css */
+    body, html {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+
+      -moz-background-size: 100% 100%;
+      background-image: url("1.webp") ;
+      background-size: 100%,100%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+      perspective: 1500px; /* 增大视角以适应更大的容器 */
+     /* overflow: hidden;*/
+    }
+
+    #audio-container {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      display:none ;
+    }
+
+    .cube-container {
+      position: relative;
+      width: 400px; /* 修改宽度为400px */
+      height: 400px; /* 修改高度为400px */
+      transform-style: preserve-3d;
+      animation: rotateCube 15s infinite linear; /* 增大动画时间以适应更大的容器 */
+    }
+
+    .cube-face {
+      position: absolute;
+      width: 400px; /* 修改宽度为400px */
+      height: 400px; /* 修改高度为400px */
+      background-color: rgba(255, 255, 255, 0.9);
+      border: 2px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .cube-face img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 2px; /* 可选：增大圆角以适应更大的容器 */
+    }
+
+    .front  { transform: translateZ(200px); } /* 修改平移距离为容器宽度的一半 */
+    .back   { transform: rotateY(180deg) translateZ(200px); }
+    .right  { transform: rotateY(90deg) translateZ(200px); }
+    .left   { transform: rotateY(-90deg) translateZ(200px); }
+    .top    { transform: rotateX(90deg) translateZ(200px); }
+    .bottom { transform: rotateX(-90deg) translateZ(200px); }
+
+    @keyframes rotateCube {
+      from {
+        transform: rotateX(0deg) rotateY(0deg);
+      }
+      to {
+        transform: rotateX(360deg) rotateY(360deg);
+      }
+    }
+  </style>
+
+</head>
+<body>
+<div id="audio-container">
+  <audio autoplay loop preload="auto" controls src="北斗星的爱.mp3">
+  </audio>
+</div>
+
+<div class="cube-container">
+  <div class="cube-face front">
+    <img src="y1.jpg" alt="Front Image">
+  </div>
+  <div class="cube-face back">
+    <img src="y9.jpg" alt="Back Image">
+  </div>
+  <div class="cube-face right">
+    <img src="y10.jpg" alt="Right Image">
+  </div>
+  <div class="cube-face left">
+    <img src="y11.jpg" alt="Left Image">
+  </div>
+  <div class="cube-face top">
+    <img src="y8.jpg" alt="Top Image">
+  </div>
+  <div class="cube-face bottom">
+    <img src="1.webp" alt="Bottom Image">
+  </div>
+</div>
+
+</body>
+</html>
